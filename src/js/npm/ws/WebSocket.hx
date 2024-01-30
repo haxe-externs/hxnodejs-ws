@@ -54,7 +54,7 @@ abstract Data(Dynamic)
   }
 }
 
-@:enum abstract WebSocketEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
+enum abstract WebSocketEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
   /**
   Event: 'close'
 
@@ -290,7 +290,7 @@ typedef WebSocketOptions = {
   origin:String,
 }
 
-@:enum abstract ReadyState(Int) to Int {
+enum abstract ReadyState(Int) to Int {
   /**
  	The connection is not yet open.
   **/
@@ -317,7 +317,7 @@ typedef WebSocketOptions = {
   Defaults to "nodebuffer". Type "fragments" will emit the array of fragments as received from the sender, without copyfull concatenation,
   which is useful for the performance of binary protocols transferring large messages with multiple fragments.
 **/
-@:enum abstract BinaryType(String) to String {
+enum abstract BinaryType(String) to String {
   var NodeBuffer = 'nodebuffer';
   var ArrayBuffer = 'arraybuffer';
   var Fragments = 'fragments';

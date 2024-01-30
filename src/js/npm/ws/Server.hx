@@ -8,7 +8,7 @@ import js.lib.Error;
 import js.Error;
 #end
 
-@:enum abstract ServerEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
+enum abstract ServerEvent<T:haxe.Constraints.Function>(Event<T>) to Event<T> {
   /**
     Event: 'connection'
       socket {WebSocket}
