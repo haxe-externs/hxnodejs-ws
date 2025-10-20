@@ -1,13 +1,8 @@
 package js.npm.ws;
 import haxe.extern.EitherType;
-import js.node.events.EventEmitter;
-#if haxe4
 import js.lib.ArrayBuffer;
 import js.lib.Error;
-#else
-import js.html.ArrayBuffer;
-import js.Error;
-#end
+import js.node.events.EventEmitter;
 
 abstract Data(Dynamic)
   from js.node.Buffer
@@ -39,15 +34,12 @@ abstract Data(Dynamic)
     }
   }
 
-  inline public function isBinary()
-  {
-    return !Std.is(this, String);
+  inline public function isBinary() {
+    return !Std.isOfType(this, String);
   }
 
-  inline public function asString():String
-  {
-    if (!Std.is(this, String))
-    {
+  inline public function asString():String {
+    if (!Std.isOfType(this, String)) {
       throw 'Cannot cast $this to String';
     }
     return this;
@@ -137,9 +129,9 @@ extern class WebSocket extends EventEmitter<WebSocket> {
   /**
     Create a new WebSocket instance.
   **/
-  @:overload(function(address:EitherType<String, js.node.Url>):Void {})
-  @:overload(function(address:EitherType<String, js.node.Url>, protocols:EitherType<String, Array<String>>):Void {})
-  public function new(address:EitherType<String,js.node.Url>, protocols:EitherType<String,Array<String>>, options:WebSocketOptions);
+  @:overload(function(address:EitherType<String, js.node.url.URL>):Void {})
+  @:overload(function(address:EitherType<String, js.node.url.URL>, protocols:EitherType<String, Array<String>>):Void {})
+  public function new(address:EitherType<String,js.node.url.URL>, protocols:EitherType<String,Array<String>>, options:WebSocketOptions);
 
   /**
     A string indicating the type of binary data being transmitted by the connection. This should be one of "nodebuffer", "arraybuffer" or "fragments".
